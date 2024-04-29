@@ -1,0 +1,21 @@
+ .inputField{
+   width: 100%;
+   
+ }
+
+ .inputField input{
+    display:block;
+    width: 350px;
+    outline: none;
+    padding:  10px;
+    border-radius: 10px;
+    border: none;
+    margin: 10px 0px;
+ }
+
+#signup{
+        width: 300px;
+        margin-left: 20px;
+        border-radius: 20px !important;
+     
+} 
