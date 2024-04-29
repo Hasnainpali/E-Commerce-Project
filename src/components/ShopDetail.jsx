@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { CartContext } from "./Context Api/ShopContext";
 
 export default function ShopDetail() {
+  const {AddtoCart} = useContext(CartContext)
   const [products, setProduct] = useState([]);
   const { id } = useParams();
 
@@ -210,7 +212,7 @@ export default function ShopDetail() {
                     </button>
                   </div>
                 </div>
-                <button className="btn btn-primary px-3">
+                <button className="btn btn-primary px-3" onClick={()=> AddtoCart(products)} >
                   <i className="fa fa-shopping-cart mr-1"></i> Add To Cart
                 </button>
               </div>

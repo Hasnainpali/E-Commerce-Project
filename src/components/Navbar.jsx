@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import './Navbar.css';
+import { CartContext } from "./Context Api/ShopContext";
 
 export default function Navbar() {
+  const {cartItems} = useContext(CartContext)
   return (
     <div className="container-fluid bg-dark mb-30" id="bact to top">
       <div className="row px-xl-5">
@@ -131,15 +133,15 @@ export default function Navbar() {
                 </div>
               </div>
               <div className="navbar-nav ml-auto py-0 d-none d-lg-block mobile-visible">
-                  <a href="" className="btn px-0 ml-3">
+                  <Link to="/shopping-cart" className="btn px-0 ml-3">
                     <i className="fas fa-shopping-cart text-primary"></i>
                     <span
                       className="badge text-secondary border border-secondary rounded-circle"
                       style={{ paddingBottom: "2px" }}
                     >
-                      0
+                      {cartItems.length}
                     </span>
-                  </a>
+                  </Link>
                 </div>
             </div>
           </nav>

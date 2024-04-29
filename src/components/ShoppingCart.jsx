@@ -1,21 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CartContext } from './Context Api/ShopContext'
 
 export default function ShoppingCart() {
+    const {cartItems,AddtoCart,RemovetoCart,RemoveSingleItem,getTotalCart} = useContext(CartContext)
+
   return (
-    <div class="container-fluid">
-        <div class="row px-xl-5">
-        <div class="col-12">
-            <nav class="breadcrumb bg-light mb-30">
-                <a class="breadcrumb-item text-dark" href="#">Home</a>
-                <a class="breadcrumb-item text-dark" href="#">Shop</a>
-                <span class="breadcrumb-item active">Shopping Cart</span>
+    <div className="container-fluid">
+        <div className="row px-xl-5">
+        <div className="col-12">
+            <nav className="breadcrumb bg-light mb-30">
+                <a className="breadcrumb-item text-dark" href="/">Home</a>
+                <a className="breadcrumb-item text-dark" href="/">Shop</a>
+                <span className="breadcrumb-item active">Shopping Cart</span>
             </nav>
         </div>
     </div>
-    <div class="row px-xl-5">
-        <div class="col-lg-8 table-responsive mb-5">
-            <table class="table table-light table-borderless table-hover text-center mb-0">
-                <thead class="thead-dark">
+    <div className="row px-xl-5">
+        <div className="col-lg-8 table-responsive mb-5">
+            <table className="table table-light table-borderless table-hover text-center mb-0">
+                <thead className="thead-dark">
                     <tr>
                         <th>Products</th>
                         <th>Price</th>
@@ -24,142 +27,72 @@ export default function ShoppingCart() {
                         <th>Remove</th>
                     </tr>
                 </thead>
-                <tbody class="align-middle">
-                    <tr>
-                        <td class="align-middle"><img src="img/product-1.jpg" alt="" style={{width: "50px",}}/> Product Name</td>
-                        <td class="align-middle">$150</td>
-                        <td class="align-middle">
-                            <div class="input-group quantity mx-auto" style={{width: "100px",}}>
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-minus" >
-                                    <i class="fa fa-minus"></i>
+                <tbody className="align-middle">
+                    {cartItems.map((product)=>{
+                        console.log("RemoveSingleItem")
+                        return(
+                            <tr key={product.id}>
+                        <td className="align-middle d-flex  align-items-center">
+                            <img src={product.image} alt="" style={{width: "50px",}}/> 
+                           <span className='pl-2 text-dark font-weight-bold'> {product.title.substring(0,12)} </span> 
+                        </td>
+                        <td className="align-middle text-dark font-weight-bold">${product.price}</td>
+                        <td className="align-middle">
+                            <div className=" mx-auto" style={{width: "100px",}}>
+                                <div className="d-flex">
+                                    <button className="btn btn-sm btn-primary btn-minus" 
+                                    onClick={()=>{RemovetoCart(product)}} >
+                                    <i className="fa fa-minus"></i>
+                                    </button>
+                                    <p className="form-control form-control-sm bg-secondary border-0 text-center">
+                                        {product.quantity}
+                                        
+                                    </p>
+                                   <button className="btn btn-sm btn-primary btn-plus" 
+                                    onClick={()=>{AddtoCart(product)}}>
+                                        <i className="fa fa-plus"></i>
                                     </button>
                                 </div>
-                                <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1"/>
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-plus">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
+                               
                             </div>
                         </td>
-                        <td class="align-middle">$150</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle"><img src="img/product-2.jpg" alt="" style={{width: "50px",}}/> Product Name</td>
-                        <td class="align-middle">$150</td>
-                        <td class="align-middle">
-                            <div class="input-group quantity mx-auto" style={{width: "100px",}}>
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-minus" >
-                                    <i class="fa fa-minus"></i>
-                                    </button>
-                                </div>
-                                <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1"/>
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-plus">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
+                        <td className="align-middle text-dark font-weight-bold">${getTotalCart()}</td>
+                        <td className="align-middle">
+                            <button className="btn btn-sm btn-danger" onClick={()=>RemoveSingleItem(product)}><i className="fa fa-times"></i></button>
                         </td>
-                        <td class="align-middle">$150</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle"><img src="img/product-3.jpg" alt="" style={{width: "50px",}}/> Product Name</td>
-                        <td class="align-middle">$150</td>
-                        <td class="align-middle">
-                            <div class="input-group quantity mx-auto" style={{width: "100px",}}>
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-minus" >
-                                    <i class="fa fa-minus"></i>
-                                    </button>
-                                </div>
-                                <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1"/>
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-plus">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="align-middle">$150</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle"><img src="img/product-4.jpg" alt="" style={{width: "50px",}}/> Product Name</td>
-                        <td class="align-middle">$150</td>
-                        <td class="align-middle">
-                            <div class="input-group quantity mx-auto" style={{width: "100px",}}>
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-minus" >
-                                    <i class="fa fa-minus"></i>
-                                    </button>
-                                </div>
-                                <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1"/>
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-plus">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="align-middle">$150</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle"><img src="img/product-5.jpg" alt="" style={{width: "50px",}}/> Product Name</td>
-                        <td class="align-middle">$150</td>
-                        <td class="align-middle">
-                            <div class="input-group quantity mx-auto" style={{width: "100px",}}>
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-minus" >
-                                    <i class="fa fa-minus"></i>
-                                    </button>
-                                </div>
-                                <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1"/>
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-plus">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="align-middle">$150</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-                    </tr>
+                     </tr>
+                        )
+                    })}
                 </tbody>
             </table>
         </div>
-        <div class="col-lg-4">
-            <form class="mb-30" action="">
-                <div class="input-group">
-                    <input type="text" class="form-control border-0 p-4" placeholder="Coupon Code"/>
-                    <div class="input-group-append">
-                        <button class="btn btn-primary">Apply Coupon</button>
+        <div className="col-lg-4">
+            <form className="mb-30" action="">
+                <div className="input-group">
+                    <input type="text" className="form-control border-0 p-4" placeholder="Coupon Code"/>
+                    <div className="input-group-append">
+                        <button className="btn btn-primary">Apply Coupon</button>
                     </div>
                 </div>
             </form>
-            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Cart Summary</span></h5>
-            <div class="bg-light p-30 mb-5">
-                <div class="border-bottom pb-2">
-                    <div class="d-flex justify-content-between mb-3">
+            <h5 className="section-title position-relative text-uppercase mb-3"><span className="bg-secondary pr-3">Cart Summary</span></h5>
+            <div className="bg-light p-30 mb-5">
+                <div className="border-bottom pb-2">
+                    <div className="d-flex justify-content-between mb-3">
                         <h6>Subtotal</h6>
-                        <h6>$150</h6>
+                        <h6>${}</h6>
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <h6 class="font-weight-medium">Shipping</h6>
-                        <h6 class="font-weight-medium">$10</h6>
+                    <div className="d-flex justify-content-between">
+                        <h6 className="font-weight-medium">Shipping</h6>
+                        <h6 className="font-weight-medium">$10</h6>
                     </div>
                 </div>
-                <div class="pt-2">
-                    <div class="d-flex justify-content-between mt-2">
+                <div className="pt-2">
+                    <div className="d-flex justify-content-between mt-2">
                         <h5>Total</h5>
                         <h5>$160</h5>
                     </div>
-                    <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
+                    <button className="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
                 </div>
             </div>
         </div>

@@ -26,11 +26,15 @@
 } 
 .productrow .button{
     border-radius: 20px;
-    padding: 5px 25px;
+    padding: 5px 15px;
     color: black;
     display: flex;
     align-items: center;
 }
+.productrow .button svg{
+  display: inline-block;
+}
+
 .productbanner .productrow .swiper-controls{
     position: relative;
 }

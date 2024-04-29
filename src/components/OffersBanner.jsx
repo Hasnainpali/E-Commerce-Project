@@ -3,7 +3,7 @@ import React from 'react';
 export default function OffersBanner() {
   return (
     <div class="container mt-4 pb-3">
-        <div class="row  justify-content-center px-xl-5">
+        <div class="row justify-content-center px-xl-5">
             <div class="col-md-6">
             <div class="product-offer mb-30" style={{height: "200px",}}>
                 <img class="img-fluid" src="img/offer-1.jpg" alt=""/>
