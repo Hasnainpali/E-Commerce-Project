@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './ShoppingCart.css';
 
 export default function ShoppingCart() {
-    const {cartItems,AddtoCart,RemovetoCart,RemoveSingleItem,getCartTotal,itemQuantity} = useContext(CartContext)
+    const {cartItems,AddtoCart,RemovetoCart,RemoveSingleItem,getCartTotal} = useContext(CartContext)
 
   return (
     <div className="container-fluid">
