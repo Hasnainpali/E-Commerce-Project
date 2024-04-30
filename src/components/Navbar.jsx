@@ -1,10 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import './Navbar.css';
 import { CartContext } from "./Context Api/ShopContext";
 
 export default function Navbar() {
-  const {cartItems} = useContext(CartContext)
+  const [isOpen, setisOpen]= useState(false);
+  const {cartItems} = useContext(CartContext);
+
+  const handleToggle =()=>{
+    setisOpen(!isOpen)
+  };
+  const closeMenu =()=>{
+    setisOpen(false)
+  }
   return (
     <div className="container-fluid bg-dark mb-30" id="bact to top">
       <div className="row px-xl-5">
@@ -91,23 +99,22 @@ export default function Navbar() {
               <button
                 type="button"
                 className="navbar-toggler"
-                data-toggle="collapse"
-                data-target="#navbarCollapse"
+                onClick={handleToggle}
               >
                 <span className="navbar-toggler-icon"></span>
               </button>
               
               <div
-                className="collapse navbar-collapse justify-content-between"
+                className={`collapse navbar-collapse justify-content-between ${isOpen ? 'show' : ''}`}
                 id="navbarCollapse">
                 <div className="navbar-nav mr-auto py-0">
-                  <Link to="/" className="nav-item nav-link active">
+                  <Link to="/" className="nav-item nav-link active" onClick={closeMenu}>
                     Home
                   </Link>
-                  <Link to="/shop" className="nav-item nav-link">
+                  <Link to="/shop" className="nav-item nav-link" onClick={closeMenu}>
                     Shop
                   </Link>
-                  <Link to="/shop-detail" className="nav-item nav-link">
+                  <Link to="/shop-detail" className="nav-item nav-link" onClick={closeMenu}>
                     Shop Detail
                   </Link>
                   <div className="nav-item dropdown">
@@ -119,15 +126,15 @@ export default function Navbar() {
                       Pages <i className="fa fa-angle-down mt-1"></i>
                     </Link>
                     <div className="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                      <Link to="/shopping-cart" className="dropdown-item">
+                      <Link to="/shopping-cart" className="dropdown-item" onClick={closeMenu}>
                         Shopping Cart
                       </Link>
-                      <Link to="/checkout" className="dropdown-item">
+                      <Link to="/checkout" className="dropdown-item" onClick={closeMenu}>
                         Checkout
                       </Link>
                     </div>
                   </div>
-                  <Link to="/contact" className="nav-item nav-link">
+                  <Link to="/contact" className="nav-item nav-link" onClick={closeMenu}>
                     Contact
                   </Link>
                 </div>

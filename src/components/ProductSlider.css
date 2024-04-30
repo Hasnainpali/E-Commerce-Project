@@ -4,24 +4,30 @@
 }
 .productbanner .Banner{
     width: 100%;
+    display: flex;
+    justify-content: center;
     border-radius: 10px;
     overflow: hidden ;
     padding-top: 25px;
 }
 
+.productrow .info{
+  width: 200px ;
+  margin-top: 20px;
+}
 .productbanner .Banner .cursor{
     cursor: pointer;
 }
 
 .productrow .hd{
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 600px;
     margin-bottom: 0px !important;
 }
 .productrow .info .text-lightr{
     color: rgb(145, 142, 142);
 }
-.productrow.text-sml{
+.productrow .text-sml{
     font-size: 12px;
 } 
 .productrow .button{
@@ -135,4 +141,10 @@
   color: #FFD333 !important;
 }
 
-  
+
+@media only screen and (min-width:481px)  {
+  .productrow .info{
+    width:300px;
+    margin-top: 6px;
+  }
+}

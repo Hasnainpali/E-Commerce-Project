@@ -42,7 +42,7 @@ export default function ProductSlider(props) {
       <section className="productbanner px-3">
         <div className="row px-xl-5">
           <div className="col-md-3 d-flex justify-content-center align-items-center ">
-            <div className="Banner">
+            <div className="Banner mb-2">
               <img
                 src={image}
                 alt="banner"
@@ -51,9 +51,9 @@ export default function ProductSlider(props) {
               />
             </div>
           </div>
-          <div className="col-md-9 productrow  mb-4">
+          <div className="col-md-9 productrow  mb-4 mt-sm-4">
             <div className="d-flex align-items-center ml-auto">
-              <div className="info w-75">
+              <div className="info ">
                 <h3 className="hd ">{title}</h3>
                 <p className="text-lightr text-sml">
                   {description}
@@ -61,7 +61,7 @@ export default function ProductSlider(props) {
               </div>
               <button
                 type="button"
-                class="btn btn-outline-primary ml-auto button "
+                class="btn btn-outline-primary ml-auto button  "
               >
                 <Link to={'/shop'} className="text-dark text-decoration-none">
                   View All <IoIosArrowRoundForward />

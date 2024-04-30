@@ -1,0 +1,19 @@
+.productName {
+    display: block;
+    align-items: flex-start;
+}
+.productName img{
+    width: 30px;
+    margin: auto;
+}
+
+@media only screen and (min-width:540px){
+    .productName{
+        display: flex;
+        align-items: center;
+    }
+    .productName img{
+        width: 50px;
+    }
+
+    }
