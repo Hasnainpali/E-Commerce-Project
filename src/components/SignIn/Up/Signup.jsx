@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Sign.css'
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../../Context Api/UserAuthContext';
+
 
 export default function Signup() {
+  const {setisHeaderFooter} = useContext(UserContext)
   const [firstName,setFirstName]= useState();
   const [LastName,setLastName]= useState();
   const [phone, setPhone] = useState()
@@ -16,13 +20,17 @@ export default function Signup() {
     console.log()
     
     navigate('/Signin')
-     
   }
 
+  useEffect(()=>{
+    setisHeaderFooter(false)
+  })
   return (
-    <div>
-         <div className='container-fluid '>
-             <h1 className=''>Register Here</h1>
+   <section id='jumbotron' className="d-flex justify-content-center align-items-center vh-100">
+     <div className='content'>
+         <div className='container-fluid shadow-lg'>
+         <h1 className='text-center fs-2 text-primary mb-4'>E-commerce Shop</h1>
+             <h4 className='mb-4  weight'>Register Here</h4>
 
              <div className='inputField'>
               <input type="text" placeholder='First Name' value={firstName} onChange={(e)=>setFirstName(e.target.value)}required />
@@ -30,13 +38,16 @@ export default function Signup() {
               <input type="number" placeholder='Phone Number' value={phone} onChange={(e)=>setPhone(e.target.value)}required />
               <input type="email" placeholder='Email' value={email} onChange={(e)=>setEmail(e.target.value)}required />
               <input type="password" placeholder='Password' value={passowrd} onChange={(e)=>setPassword(e.target.value)} required />
-              <li className='ml-3 mb-3'>Password must be 8 character</li>
              </div>
-             
-               <button id='signup' onClick={register} className=' btn btn-primary '>Register</button>
-              
+               <button id='signup' onClick={register} className=' btn btn-primary mt-2 '>Register</button>
+               <div className=" d-flex mt-3 justify-content-center align-items-center">
+                 <span className='text-dark'>Already at Account?
+                   <a href='/signin' className='text '>Sign in</a>
+                 </span>
+               </div>
               
          </div>
     </div>
+   </section>
   )
 }

@@ -9,12 +9,16 @@ import Checkout from './components/Checkout';
 import ContactPage from './components/ContactPage';
 import Signup from './components/SignIn/Up/Signup';
 import Signin from './components/SignIn/Up/Signin';
+import Footer from './components/Footer';
+import { useContext } from 'react';
+import { UserContext } from './components/Context Api/UserAuthContext';
 
 function App() {
+  const {isHeaderFooter} = useContext(UserContext)
   return (
     <div>
-          <TopBar/>
-          <Navbar/>
+       {isHeaderFooter === true &&  <TopBar/> }   
+       {isHeaderFooter === true &&  <Navbar/> }  
           <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/shop' element={<Shop/>}/>
@@ -25,7 +29,7 @@ function App() {
             <Route path='/signup' element={<Signup/>}/>
             <Route path='/signin' element={<Signin/>}/>
           </Routes>
-        
+          {isHeaderFooter === true &&  <Footer/> }  
           
     </div>
   );

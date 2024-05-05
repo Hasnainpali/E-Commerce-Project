@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import './TopBar.css'
+import { UserContext } from "./Context Api/UserAuthContext";
 
 function TopBar() {
+  const {isLogin} = useContext(UserContext)
   return (
     <div className="container-fluid">
       <div className="row bg-secondary py-1 px-xl-2">
@@ -23,22 +26,25 @@ function TopBar() {
         </div>
         <div className="col-lg-6 d-flex flex-wrap justify-content-between align-items-center text-lg-right d-lg-block">
           <div className="d-inline-flex justify-content-center text-center align-items-center">
-            <div className="btn-group mr-0 mr-md-3  ">
-              <button
+            <div className="btn  mr-0 mr-md-3 ">
+              {isLogin === false ? <button
                 type="button"
-                className="btn btn-sm btn-primary w dropdown-toggle"
-                data-toggle="dropdown"
+                className="btn btn-sm btn-primary btns" 
               >
-                My Account
-              </button>
-              <div className="dropdown-menu dropdown-menu-right">
-                <Link to="/signin" className="dropdown-item">
+               <Link to="/signin" className="text-dark  ">
                   Sign in
                 </Link>
-                <Link to="/signup" className="dropdown-item">
-                  Sign up
+              </button>
+              : 
+              <button
+                type="button"
+                className="btn btn-sm btn-primary btns" 
+              >
+               <Link to="/signin" className="text-dark  ">
+                  Log Out
                 </Link>
-              </div>
+              </button>}
+             
             </div>
             <div className="d-md-none d-none d-lg-block">
               <p className="m-0">Customer Service</p>

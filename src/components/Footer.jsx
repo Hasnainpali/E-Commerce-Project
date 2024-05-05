@@ -155,7 +155,7 @@ export default function Footer() {
       </div>
 
       {showBackToTop && (
-        <a href="#" className="btn btn-primary back-to-top" onClick={handleBackToTop}>
+        <a href="/" className="btn btn-primary back-to-top" onClick={handleBackToTop}>
           <i className="fa fa-angle-double-up"></i>
         </a>
       )}
